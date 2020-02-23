@@ -1,0 +1,33 @@
+<!--, saved from url=(0014)about:internet -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UiPath Robot</title>
+    <link rel="stylesheet" type="text/css" href="TitleBarStyle.css">
+    <link rel="stylesheet" type="text/css" href="Loader.css">
+    <script src="LogicToExecute.js"></script>
+</head>
+
+<body onload="OnLoad()">
+    <div class="topnav" id="myTopnav">
+        <img src="UiPathLogo.png" height="40">
+        <a href="#Exit" onclick="Close()" class="active">SALIR</a>
+    </div>
+    <div class="container">
+        <form action="/action_page.php">
+            <div id='statusCheck'>&nbsp;</div>
+            <div>
+                <div >
+                    <input type="btn" onclick="SubmitValues()" value="Resumir" readonly>
+                    <input type="btn" class="active" onclick="Close()" value="Ignorar" readonly style="margin-right: 0px;">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="mainLoader" class="UiPathLoader"></div>
+</body>
+
+</html>

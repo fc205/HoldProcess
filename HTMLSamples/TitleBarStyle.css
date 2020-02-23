@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+}
+
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+input[type=btn] {
+    padding: 12px 12px 12px 12px;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin: 50px 0px 0px 0px;
+    margin-right: 50px;
+    border: 3px;
+    font-size: 25px;
+    background-color: #ff6600;
+    text-shadow: 5px 3px #ff5200;
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    float: left;
+    width: 144px;
+}
+
+input[type=btn]:hover {
+    background-color: #ff8800;
+}
+
+input[type=btn].disabled:hover, input[type=btn].disabled {
+	background-color: #dddddd;
+    color: white;
+    text-shadow: none;
+	pointer-events: none;
+}
+
+.container {
+    padding: 20px;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 500px) {
+    .col-25,
+    .col-75,
+    input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #ff6600;
+    padding: 5px;
+}
+
+.topnav a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a.disabled {
+    color: #ff6600;
+    background-color: #ff6600;
+    color: #ff6600;
+    text-shadow: none;
+	pointer-events: none;
+}
+
+.topnav a.active {
+    background-color: #ff4000;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+.topnav img {
+    float: Left;
+}
+
+.topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+}
+
+
+}
