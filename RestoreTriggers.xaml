@@ -1,0 +1,70 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="RestoreTriggers" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:usa="clr-namespace:UiPathTeam.SharedContext.Activities;assembly=UiPathTeam.SharedContext.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="NameFatherProcess" Type="InArgument(x:String)" />
+    <x:Property Name="ContextName" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap:VirtualizedContainerService.HintSize>496,374</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="16">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="RestoreTriggers" sap:VirtualizedContainerService.HintSize="476,354" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <usa:SharedContextScopeActivity FilePath="{x:Null}" Folder="{x:Null}" Clear="False" DisplayName="Shared Context Scope" sap:VirtualizedContainerService.HintSize="434,262" sap2010:WorkflowViewState.IdRef="SharedContextScopeActivity_2" Lock="True" Name="[ContextName]" Retries="5" Type="File">
+      <usa:SharedContextScopeActivity.Body>
+        <ActivityAction x:TypeArguments="usa:ContextClient">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="usa:ContextClient" Name="ContextClient" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Interact with the Context" sap:VirtualizedContainerService.HintSize="242,176" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" Action="RemoveTriggerListener" ArgumentsJson="[&quot;{&quot;&quot;ids&quot;&quot; : [&quot;&quot;2&quot;&quot;, &quot;&quot;3&quot;&quot;]}&quot;]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_4" To="[NameFatherProcess]" />
+            <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" Action="AddTriggerListener" ArgumentsJson="[&quot;{&quot;&quot;ids&quot;&quot; : [&quot;&quot;1&quot;&quot;]}&quot;]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_5" To="[NameFatherProcess]" />
+          </Sequence>
+        </ActivityAction>
+      </usa:SharedContextScopeActivity.Body>
+    </usa:SharedContextScopeActivity>
+  </Sequence>
+</Activity>

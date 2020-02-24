@@ -54,6 +54,7 @@ function ResponseFunction(status) {
 }
 
 function MyClose(status) {
+	window.alert("Hello world");
 	Close();
 }
 

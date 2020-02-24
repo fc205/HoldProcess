@@ -86,7 +86,7 @@
           <av:PointCollection x:Key="ConnectorLocation">120,212.04 120,262.04</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Init" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence DisplayName="Init" sap:VirtualizedContainerService.HintSize="476,712" sap2010:WorkflowViewState.IdRef="Sequence_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -118,7 +118,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" Action="RemoveTriggerListener" ArgumentsJson="[&quot;{&quot;&quot;ids&quot;&quot; : [&quot;&quot;1&quot;&quot;]}&quot;]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_1" To="[NameFatherProcess]" />
-                <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" Action="AddTriggerListener" ArgumentsJson="[&quot;{&quot;&quot;ids&quot;&quot; : [&quot;&quot;2&quot;&quot;. &quot;&quot;3&quot;&quot;]}&quot;]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_3" To="[NameFatherProcess]" />
+                <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" Action="AddTriggerListener" ArgumentsJson="[&quot;{&quot;&quot;ids&quot;&quot; : [&quot;&quot;2&quot;&quot;, &quot;&quot;3&quot;&quot;]}&quot;]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_3" To="[NameFatherProcess]" />
               </Sequence>
             </ActivityAction>
           </usa:SharedContextScopeActivity.Body>
@@ -148,7 +148,9 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Parallel.CompletionCondition>[shouldExit]</Parallel.CompletionCondition>
+                <Parallel.CompletionCondition>
+                  <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="shouldExit" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+                </Parallel.CompletionCondition>
                 <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Process.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="aConfigDict">[aConfigDict]</InArgument>
@@ -157,10 +159,10 @@
               </Parallel>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="472,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,156" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -168,6 +170,12 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
+                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RestoreTriggers workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="RestoreTriggers.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="NameFatherProcess">[NameFatherProcess]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="ContextName">[ContextName]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
                 </ActivityAction>
               </Catch>
             </TryCatch.Catches>
@@ -186,32 +194,13 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="476,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Clean tear down&quot;]" />
-                <Sequence DisplayName="RestoreTriggers" sap:VirtualizedContainerService.HintSize="476,354" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <usa:SharedContextScopeActivity FilePath="{x:Null}" Folder="{x:Null}" Clear="False" DisplayName="Shared Context Scope" sap:VirtualizedContainerService.HintSize="434,262" sap2010:WorkflowViewState.IdRef="SharedContextScopeActivity_2" Lock="True" Name="[ContextName]" Retries="5" Type="File">
-                    <usa:SharedContextScopeActivity.Body>
-                      <ActivityAction x:TypeArguments="usa:ContextClient">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="usa:ContextClient" Name="ContextClient" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Interact with the Context" sap:VirtualizedContainerService.HintSize="242,176" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" Action="RemoveTriggerListener" ArgumentsJson="[&quot;{&quot;&quot;ids&quot;&quot; : [&quot;&quot;2&quot;&quot;, &quot;&quot;3&quot;&quot;]}&quot;]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_4" To="[NameFatherProcess]" />
-                          <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" Action="AddTriggerListener" ArgumentsJson="[&quot;{&quot;&quot;ids&quot;&quot; : [&quot;&quot;1&quot;&quot;]}&quot;]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_5" To="[NameFatherProcess]" />
-                        </Sequence>
-                      </ActivityAction>
-                    </usa:SharedContextScopeActivity.Body>
-                  </usa:SharedContextScopeActivity>
-                </Sequence>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Clean tear down&quot;]" />
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RestoreTriggers workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="RestoreTriggers.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="NameFatherProcess">[NameFatherProcess]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="ContextName">[ContextName]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
               </Sequence>
             </FlowStep>
           </FlowStep.Next>
