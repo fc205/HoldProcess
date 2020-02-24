@@ -14,13 +14,13 @@ SendMessage del HoldProcess:
 From: HoldProcess
 To: NameFatherProcess
 Action: RemoveTriggerListener
-Arguments: {"id" : 1}
+Arguments: {"ids" : ["1"]}
 
 SendMessage del HoldProcess:
 From: HoldProcess
 To: NameFatherProcess
 Action: AddTriggerListener
-Arguments: {"id" : 2}
+Arguments: {"ids" : ["2", "3"]}
 
 
 Message al cerrarse el HoldProcess
@@ -30,12 +30,12 @@ SendMessage del HoldProcess:
 From: HoldProcess
 To: NameFatherProcess
 Action: RemoveTriggerListener
-Arguments: {"id" : 2}
+Arguments: {"ids" : ["2", "3"]}
 
 SendMessage del HoldProcess:
 From: HoldProcess
 To: NameFatherProcess
 Action: AddTriggerListener
-Arguments: {"id" : 1}
+Arguments: {"ids" : ["1"]}
 
 
