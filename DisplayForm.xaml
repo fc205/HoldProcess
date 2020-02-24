@@ -6,7 +6,7 @@
     <x:Property Name="aTimeSpent" Type="OutArgument(x:TimeSpan)" />
     <x:Property Name="aTimeout" Type="InArgument(x:TimeSpan)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1227,2890</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1227,2990</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="17">
@@ -47,7 +47,7 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DisplayForm" sap:VirtualizedContainerService.HintSize="1207,2830" sap2010:WorkflowViewState.IdRef="Sequence_10">
+  <Sequence DisplayName="DisplayForm" sap:VirtualizedContainerService.HintSize="1207,2930" sap2010:WorkflowViewState.IdRef="Sequence_10">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="aFileText" />
       <Variable x:TypeArguments="x:String" Name="aSourceFileName" />
@@ -137,11 +137,11 @@
       </If.Then>
     </If>
     <ui:WriteTextFile DisplayName="Write Text File" FileName="[aTempFileName]" sap:VirtualizedContainerService.HintSize="1165,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[aFileText]" />
-    <Parallel sap:VirtualizedContainerService.HintSize="1165,982" sap2010:WorkflowViewState.IdRef="Parallel_1">
+    <Parallel sap:VirtualizedContainerService.HintSize="1165,1082" sap2010:WorkflowViewState.IdRef="Parallel_1">
       <Parallel.CompletionCondition>
         <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="forceFinish" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
       </Parallel.CompletionCondition>
-      <Sequence DisplayName="IFL - Scope" sap:VirtualizedContainerService.HintSize="615,936" sap2010:WorkflowViewState.IdRef="Sequence_9">
+      <Sequence DisplayName="IFL - Scope" sap:VirtualizedContainerService.HintSize="615,1036" sap2010:WorkflowViewState.IdRef="Sequence_9">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="payload" />
         </Sequence.Variables>
@@ -150,19 +150,19 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <uia:InteractiveFormLauncher IconPath="{x:Null}" ScreenID="{x:Null}" AlwaysOnTop="True" sap2010:Annotation.AnnotationText="" CommunicationChannelName="SampleCommunicationChannelName" DisplayName="Interactive form launcher" FixedSize="True" FullScreen="False" HTMLPath="[aTempFileName]" Height="220" sap:VirtualizedContainerService.HintSize="573,682" sap2010:WorkflowViewState.IdRef="InteractiveFormLauncher_1" InputVariableName="payload" NoTitleBar="True" ScreenPosition="BottomRight" ScriptErrorsSuppressed="False" Title="UiPath Robot" UseLastPosition="False" Width="420">
+        <uia:InteractiveFormLauncher IconPath="{x:Null}" ScreenID="{x:Null}" AlwaysOnTop="True" sap2010:Annotation.AnnotationText="" CommunicationChannelName="SampleCommunicationChannelName" DisplayName="Interactive form launcher" FixedSize="True" FullScreen="False" HTMLPath="[aTempFileName]" Height="220" sap:VirtualizedContainerService.HintSize="573,782" sap2010:WorkflowViewState.IdRef="InteractiveFormLauncher_1" InputVariableName="payload" NoTitleBar="True" ScreenPosition="BottomRight" ScriptErrorsSuppressed="False" Title="UiPath Robot" UseLastPosition="False" Width="420">
           <uia:InteractiveFormLauncher.Body>
             <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="PropertiesDictionary" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="539,507" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="539,607" sap2010:WorkflowViewState.IdRef="Sequence_8">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[PropertiesDictionary(&quot;uipath-method&quot;).ToString]" sap:VirtualizedContainerService.HintSize="497,415" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[PropertiesDictionary(&quot;uipath-method&quot;).ToString]" sap:VirtualizedContainerService.HintSize="497,515" sap2010:WorkflowViewState.IdRef="Switch`1_1">
                   <Sequence x:Key="getResposeFromRobot" sap:VirtualizedContainerService.HintSize="304,309" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -191,7 +191,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </Assign>
                   </Sequence>
-                  <Sequence x:Key="getRobotStatus" sap:VirtualizedContainerService.HintSize="304,209" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence x:Key="getRobotStatus" sap:VirtualizedContainerService.HintSize="304,149" sap2010:WorkflowViewState.IdRef="Sequence_7">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -241,7 +241,7 @@
           </Assign.Value>
         </Assign>
       </Sequence>
-      <Sequence sap:VirtualizedContainerService.HintSize="376,936" sap2010:WorkflowViewState.IdRef="Sequence_12">
+      <Sequence sap:VirtualizedContainerService.HintSize="376,1036" sap2010:WorkflowViewState.IdRef="Sequence_12">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="aStatus" />
         </Sequence.Variables>
@@ -270,7 +270,6 @@
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Sending a Close message to Form&quot;]" />
         <uia:GetFormStatus CommunicationChannelName="SampleCommunicationChannelName" DisplayName="Get form status" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="GetFormStatus_1" Status="[aStatus]" WaitUntilDataAvailable="False" />
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Status: &quot; + aStatus]" />
-        <Delay Duration="[aTimeout]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_5" />
         <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_8">
           <Assign.To>
             <OutArgument x:TypeArguments="x:Boolean">[forceFinish]</OutArgument>

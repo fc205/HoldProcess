@@ -1,0 +1,41 @@
+
+
+Llamada a HoldProcess
+
+Inputs:
+- NameFatherProcess
+- ContextName
+- 
+
+Message al conectarse el HoldProcess
+====================================
+
+SendMessage del HoldProcess:
+From: HoldProcess
+To: NameFatherProcess
+Action: RemoveTriggerListener
+Arguments: {"id" : 1}
+
+SendMessage del HoldProcess:
+From: HoldProcess
+To: NameFatherProcess
+Action: AddTriggerListener
+Arguments: {"id" : 2}
+
+
+Message al cerrarse el HoldProcess
+==================================
+
+SendMessage del HoldProcess:
+From: HoldProcess
+To: NameFatherProcess
+Action: RemoveTriggerListener
+Arguments: {"id" : 2}
+
+SendMessage del HoldProcess:
+From: HoldProcess
+To: NameFatherProcess
+Action: AddTriggerListener
+Arguments: {"id" : 1}
+
+
