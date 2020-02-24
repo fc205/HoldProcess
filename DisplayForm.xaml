@@ -55,6 +55,7 @@
       <Variable x:TypeArguments="s:DateTime" Name="startTime" />
       <Variable x:TypeArguments="s:DateTime" Name="endTime" />
       <Variable x:TypeArguments="x:Boolean" Name="forceFinish" />
+      <Variable x:TypeArguments="x:String" Name="payload" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -142,9 +143,6 @@
         <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="forceFinish" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
       </Parallel.CompletionCondition>
       <Sequence DisplayName="IFL - Scope" sap:VirtualizedContainerService.HintSize="615,1036" sap2010:WorkflowViewState.IdRef="Sequence_9">
-        <Sequence.Variables>
-          <Variable x:TypeArguments="x:String" Name="payload" />
-        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -191,7 +189,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </Assign>
                   </Sequence>
-                  <Sequence x:Key="getRobotStatus" sap:VirtualizedContainerService.HintSize="304,149" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence x:Key="getRobotStatus" sap:VirtualizedContainerService.HintSize="304,209" sap2010:WorkflowViewState.IdRef="Sequence_7">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -252,24 +250,7 @@
         </sap:WorkflowViewStateService.ViewState>
         <Delay Duration="[aTimeout]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_4" />
         <uia:ExecuteFormFunction CommunicationChannelName="SampleCommunicationChannelName" DisplayName="Execute form function" FunctionName="MyClose" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExecuteFormFunction_1" Parameters="[&quot;{ &quot;&quot;uipath-killform&quot;&quot; : &quot;&quot;1&quot;&quot;}&quot;]" />
-        <uia:ExecuteFormFunction CommunicationChannelName="SampleCommunicationChannelName" DisplayName="Execute form function" FunctionName="MyClose" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExecuteFormFunction_2" Parameters="{}{}" />
-        <uia:ExecuteFormFunction CommunicationChannelName="SampleCommunicationChannelName" DisplayName="Execute form function" FunctionName="Close" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExecuteFormFunction_3">
-          <uia:ExecuteFormFunction.Parameters>
-            <InArgument x:TypeArguments="x:String">
-              <Literal x:TypeArguments="x:String" Value="" />
-            </InArgument>
-          </uia:ExecuteFormFunction.Parameters>
-        </uia:ExecuteFormFunction>
-        <uia:ExecuteFormFunction CommunicationChannelName="SampleCommunicationChannelName" DisplayName="Execute form function" FunctionName="Close()" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExecuteFormFunction_4">
-          <uia:ExecuteFormFunction.Parameters>
-            <InArgument x:TypeArguments="x:String">
-              <Literal x:TypeArguments="x:String" Value="" />
-            </InArgument>
-          </uia:ExecuteFormFunction.Parameters>
-        </uia:ExecuteFormFunction>
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Sending a Close message to Form&quot;]" />
-        <uia:GetFormStatus CommunicationChannelName="SampleCommunicationChannelName" DisplayName="Get form status" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="GetFormStatus_1" Status="[aStatus]" WaitUntilDataAvailable="False" />
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Status: &quot; + aStatus]" />
         <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_8">
           <Assign.To>
             <OutArgument x:TypeArguments="x:Boolean">[forceFinish]</OutArgument>
