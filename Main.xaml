@@ -6,10 +6,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>654,696</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>654,736</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="46">
+    <scg:List x:TypeArguments="x:String" Capacity="24">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -37,7 +37,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="20">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -65,6 +65,7 @@
       <Variable x:TypeArguments="x:Boolean" Name="shouldExit" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="aConfigDict" />
       <Variable x:TypeArguments="x:String" Name="aCurrentProcessName" />
+      <Variable x:TypeArguments="x:String" Name="aContextFileName" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -72,13 +73,13 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,179.04 220,179.04</av:PointCollection>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 120,107.5 120,146.04</av:PointCollection>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID8</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID2">
+    <FlowStep x:Name="__ReferenceID8">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">20,146.04</av:Point>
@@ -105,7 +106,7 @@
             <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="aConfigDict">[aConfigDict]</OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
-        <usa:SharedContextScopeActivity FilePath="{x:Null}" Folder="{x:Null}" Clear="False" DisplayName="Shared Context Scope" sap:VirtualizedContainerService.HintSize="434,262" sap2010:WorkflowViewState.IdRef="SharedContextScopeActivity_1" Lock="True" Name="[ContextName]" Retries="5" Type="File">
+        <usa:SharedContextScopeActivity Folder="{x:Null}" Clear="False" DisplayName="Shared Context Scope" FilePath="[aContextFileName]" sap:VirtualizedContainerService.HintSize="434,262" sap2010:WorkflowViewState.IdRef="SharedContextScopeActivity_1" Lock="True" Name="[ContextName]" Retries="5" Type="File">
           <usa:SharedContextScopeActivity.Body>
             <ActivityAction x:TypeArguments="usa:ContextClient">
               <ActivityAction.Argument>
@@ -117,8 +118,8 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" Action="RemoveTriggerListener" ArgumentsJson="[&quot;{&quot;&quot;ids&quot;&quot; : [&quot;&quot;1&quot;&quot;]}&quot;]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_1" To="[NameFatherProcess]" />
-                <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" Action="AddTriggerListener" ArgumentsJson="[&quot;{&quot;&quot;ids&quot;&quot; : [&quot;&quot;2&quot;&quot;, &quot;&quot;3&quot;&quot;]}&quot;]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_3" To="[NameFatherProcess]" />
+                <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" Action="RemoveTriggerListenerById" ArgumentsJson="1" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_1" To="[NameFatherProcess]" />
+                <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" Action="AddTriggerListenerByOwner" ArgumentsJson="[aCurrentProcessName]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_3" To="[NameFatherProcess]" />
               </Sequence>
             </ActivityAction>
           </usa:SharedContextScopeActivity.Body>
@@ -126,7 +127,7 @@
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Starting main loop&quot;]" />
       </Sequence>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID0">
+        <FlowStep x:Name="__ReferenceID6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">20,262.04</av:Point>
@@ -141,7 +142,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Parallel DisplayName="Main - Run Parallel Trigger" sap:VirtualizedContainerService.HintSize="468,133" sap2010:WorkflowViewState.IdRef="Parallel_2">
+              <Parallel DisplayName="Main - Run Parallel Trigger" sap:VirtualizedContainerService.HintSize="1252,936" sap2010:WorkflowViewState.IdRef="Parallel_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -151,18 +152,169 @@
                 <Parallel.CompletionCondition>
                   <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="shouldExit" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
                 </Parallel.CompletionCondition>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Process.xaml">
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="334,890" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Process.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="aConfigDict">[aConfigDict]</InArgument>
+                    <InOutArgument x:TypeArguments="x:Boolean" x:Key="shouldExit">[shouldExit]</InOutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
+                <Sequence DisplayName="File Listener" sap:VirtualizedContainerService.HintSize="744,890" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:FileChangeTriggerV2 ContinueOnError="{x:Null}" ChangeType="Changed" ContinueMonitoring="[Not shouldExit]" DisplayName="File Change Trigger" FileName="[Path.GetFileName(aContextFileName)]" sap:VirtualizedContainerService.HintSize="702,798" sap2010:WorkflowViewState.IdRef="FileChangeTriggerV2_2" IncludeSubdirectories="False" NotifyFilters="FileName, LastWrite" Path="[Path.GetDirectoryName(aContextFileName)]">
+                    <ui:FileChangeTriggerV2.Body>
+                      <ActivityAction x:TypeArguments="ui:FileChangeInfo">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="ui:FileChangeInfo" Name="FileChangeInfo" />
+                        </ActivityAction.Argument>
+                        <usa:SharedContextScopeActivity FilePath="{x:Null}" Folder="{x:Null}" Clear="False" DisplayName="Shared Context Scope" sap:VirtualizedContainerService.HintSize="668,722" sap2010:WorkflowViewState.IdRef="SharedContextScopeActivity_2" Lock="True" Name="[ContextName]" Retries="5" Type="File">
+                          <usa:SharedContextScopeActivity.Body>
+                            <ActivityAction x:TypeArguments="usa:ContextClient">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="usa:ContextClient" Name="ContextClient" />
+                              </ActivityAction.Argument>
+                              <Flowchart sap:VirtualizedContainerService.HintSize="634,636" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+                                <Flowchart.Variables>
+                                  <Variable x:TypeArguments="x:Boolean" Name="isQueueEmpty" />
+                                  <Variable x:TypeArguments="x:String" Name="anAction" />
+                                  <Variable x:TypeArguments="x:String" Name="aArguments" />
+                                  <Variable x:TypeArguments="x:String" Name="aFrom" />
+                                </Flowchart.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,127.5</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Flowchart.StartNode>
+                                  <x:Reference>__ReferenceID5</x:Reference>
+                                </Flowchart.StartNode>
+                                <FlowStep x:Name="__ReferenceID5">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">200,127.5</av:Point>
+                                      <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                      <av:PointCollection x:Key="ConnectorLocation">300,149.5 300,199.5</av:PointCollection>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <usa:SharedContextMessageReceiveActivity ContextClient="{x:Null}" TimeSent="{x:Null}" Action="[anAction]" ArgumentsJson="[aArguments]" DisplayName="Receive Latest Message" From="[aFrom]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageReceiveActivity_2" QueueEmpty="[isQueueEmpty]">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </usa:SharedContextMessageReceiveActivity>
+                                  <FlowStep.Next>
+                                    <FlowDecision x:Name="__ReferenceID0" Condition="[isQueueEmpty]" DisplayName="isMsgQueueEmpty" sap:VirtualizedContainerService.HintSize="106,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <av:Point x:Key="ShapeLocation">247,199.5</av:Point>
+                                          <av:Size x:Key="ShapeSize">106,87</av:Size>
+                                          <av:PointCollection x:Key="TrueConnector">247,243 217,243 217,242.52 200,242.52</av:PointCollection>
+                                          <av:PointCollection x:Key="FalseConnector">353,243 402.5,243 402.5,316.5</av:PointCollection>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <FlowDecision.True>
+                                        <FlowStep x:Name="__ReferenceID1">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">0,217.02</av:Point>
+                                              <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;File changed but nothing to do for &quot; + aCurrentProcessName]">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:LogMessage>
+                                        </FlowStep>
+                                      </FlowDecision.True>
+                                      <FlowDecision.False>
+                                        <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID2" DisplayName="Flow Switch" Expression="[anAction]" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
+                                          <FlowSwitch.Default>
+                                            <FlowStep x:Name="__ReferenceID3">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <av:Point x:Key="ShapeLocation">50,387</av:Point>
+                                                  <av:Size x:Key="ShapeSize">200,66</av:Size>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <Sequence DisplayName="Do Nothing" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Nothing to do here. Move along" />
+                                              </Sequence>
+                                            </FlowStep>
+                                          </FlowSwitch.Default>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">385,316.5</av:Point>
+                                              <av:Size x:Key="ShapeSize">70,87</av:Size>
+                                              <av:PointCollection x:Key="Default">385,360 150,360 150,387</av:PointCollection>
+                                              <av:PointCollection x:Key="ForceStopConnector">385,381.75 350,381.75 350,477</av:PointCollection>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <FlowStep x:Key="ForceStop" x:Name="__ReferenceID4">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <av:Point x:Key="ShapeLocation">250,477</av:Point>
+                                                <av:Size x:Key="ShapeSize">200,66</av:Size>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <Sequence DisplayName="Force stop" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;Shutting down now!&quot;]" />
+                                              <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:Boolean">[shouldExit]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                            </Sequence>
+                                          </FlowStep>
+                                        </FlowSwitch>
+                                      </FlowDecision.False>
+                                    </FlowDecision>
+                                  </FlowStep.Next>
+                                </FlowStep>
+                                <x:Reference>__ReferenceID0</x:Reference>
+                                <x:Reference>__ReferenceID1</x:Reference>
+                                <x:Reference>__ReferenceID2</x:Reference>
+                                <x:Reference>__ReferenceID3</x:Reference>
+                                <x:Reference>__ReferenceID4</x:Reference>
+                              </Flowchart>
+                            </ActivityAction>
+                          </usa:SharedContextScopeActivity.Body>
+                        </usa:SharedContextScopeActivity>
+                      </ActivityAction>
+                    </ui:FileChangeTriggerV2.Body>
+                  </ui:FileChangeTriggerV2>
+                </Sequence>
               </Parallel>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,156" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1256,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -181,7 +333,7 @@
             </TryCatch.Catches>
           </TryCatch>
           <FlowStep.Next>
-            <FlowStep x:Name="__ReferenceID1">
+            <FlowStep x:Name="__ReferenceID7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">20,363.04</av:Point>
@@ -199,6 +351,7 @@
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="x:String" x:Key="NameFatherProcess">[NameFatherProcess]</InArgument>
                     <InArgument x:TypeArguments="x:String" x:Key="ContextName">[ContextName]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="aCurrentProcessName">[aCurrentProcessName]</InArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
               </Sequence>
@@ -207,7 +360,7 @@
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <x:Reference>__ReferenceID0</x:Reference>
-    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
   </Flowchart>
 </Activity>

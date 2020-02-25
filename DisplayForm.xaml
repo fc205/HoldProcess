@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DisplayForm" this:DisplayForm.aMessageText="Hello World" this:DisplayForm.aForceDoSomething="False" this:DisplayForm.aTimeout="[TimeSpan.FromSeconds(1)]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uia="clr-namespace:UiPathTeam.InteractiveFormLauncher.Activities;assembly=UiPathTeam.InteractiveFormLauncher.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DisplayForm" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uia="clr-namespace:UiPathTeam.InteractiveFormLauncher.Activities;assembly=UiPathTeam.InteractiveFormLauncher.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="aMessageText" Type="InArgument(x:String)" />
     <x:Property Name="aDoSomething" Type="OutArgument(x:Boolean)" />
@@ -6,7 +6,7 @@
     <x:Property Name="aTimeSpent" Type="OutArgument(x:TimeSpan)" />
     <x:Property Name="aTimeout" Type="InArgument(x:TimeSpan)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1227,2635</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1227,3145</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="17">
@@ -30,7 +30,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="14">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
@@ -45,9 +45,10 @@
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DisplayForm" sap:VirtualizedContainerService.HintSize="1207,2575" sap2010:WorkflowViewState.IdRef="Sequence_10">
+  <Sequence DisplayName="DisplayForm" sap:VirtualizedContainerService.HintSize="1207,3533" sap2010:WorkflowViewState.IdRef="Sequence_10">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="aFileText" />
       <Variable x:TypeArguments="x:String" Name="aSourceFileName" />
@@ -78,7 +79,7 @@
               <OutArgument x:TypeArguments="x:String">[aTempFileName]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">HTMLSamples\ComplexIFL_Modified.html</InArgument>
+              <InArgument x:TypeArguments="x:String">[Path.GetTempPath + "ComplexIFL_Modified.html"]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -108,7 +109,9 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1165,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Timeout is: &quot; + aTimeout.ToString]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1165,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;aMessageText: &quot; + aMessageText]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1165,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;aForceDoSomething: &quot; + if(aForceDoSomething,&quot;True&quot;, &quot;False&quot;)]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1165,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Timeout: &quot; + aTimeout.ToString]" />
     <ui:ReadTextFile Content="[aFileText]" DisplayName="Read Text File" FileName="[aSourceFileName]" sap:VirtualizedContainerService.HintSize="1165,132" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
     <Assign sap:VirtualizedContainerService.HintSize="1165,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
@@ -137,12 +140,17 @@
         </Sequence>
       </If.Then>
     </If>
+    <If Condition="[File.Exists(aTempFileName)]" sap:VirtualizedContainerService.HintSize="1165,208" sap2010:WorkflowViewState.IdRef="If_5">
+      <If.Then>
+        <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delete_3" Path="[aTempFileName]" />
+      </If.Then>
+    </If>
     <ui:WriteTextFile DisplayName="Write Text File" FileName="[aTempFileName]" sap:VirtualizedContainerService.HintSize="1165,132" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[aFileText]" />
-    <Parallel sap:VirtualizedContainerService.HintSize="1165,727" sap2010:WorkflowViewState.IdRef="Parallel_1">
+    <Parallel sap:VirtualizedContainerService.HintSize="1165,796" sap2010:WorkflowViewState.IdRef="Parallel_1">
       <Parallel.CompletionCondition>
         <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="forceFinish" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
       </Parallel.CompletionCondition>
-      <Sequence DisplayName="IFL - Scope" sap:VirtualizedContainerService.HintSize="615,681" sap2010:WorkflowViewState.IdRef="Sequence_9">
+      <Sequence DisplayName="IFL - Scope" sap:VirtualizedContainerService.HintSize="615,750" sap2010:WorkflowViewState.IdRef="Sequence_9">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -229,7 +237,6 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </uia:InteractiveFormLauncher>
-        <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="573,22" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[aTempFileName]" />
         <Assign sap:VirtualizedContainerService.HintSize="573,60" sap2010:WorkflowViewState.IdRef="Assign_9">
           <Assign.To>
             <OutArgument x:TypeArguments="x:Boolean">[forceFinish]</OutArgument>
@@ -238,8 +245,9 @@
             <InArgument x:TypeArguments="x:Boolean">True</InArgument>
           </Assign.Value>
         </Assign>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="573,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Sending a Close message to Form&quot;]" />
       </Sequence>
-      <Sequence sap:VirtualizedContainerService.HintSize="376,681" sap2010:WorkflowViewState.IdRef="Sequence_12">
+      <Sequence sap:VirtualizedContainerService.HintSize="376,750" sap2010:WorkflowViewState.IdRef="Sequence_12">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="aStatus" />
         </Sequence.Variables>
@@ -261,6 +269,11 @@
         </Assign>
       </Sequence>
     </Parallel>
+    <If Condition="[File.Exists(aTempFileName)]" sap:VirtualizedContainerService.HintSize="1165,208" sap2010:WorkflowViewState.IdRef="If_6">
+      <If.Then>
+        <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delete_4" Path="[aTempFileName]" />
+      </If.Then>
+    </If>
     <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1165,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
@@ -291,6 +304,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1165,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;aDoSomething: &quot; + if(aDoSomething,&quot;True&quot;, &quot;False&quot;)]" />
     <If Condition="[aTimeSpent &gt; aTimeout]" sap:VirtualizedContainerService.HintSize="1165,208" sap2010:WorkflowViewState.IdRef="If_4">
       <If.Then>
         <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_10">
