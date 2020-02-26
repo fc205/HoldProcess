@@ -87,7 +87,7 @@
           <av:PointCollection x:Key="ConnectorLocation">120,212.04 120,262.04</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Init" sap:VirtualizedContainerService.HintSize="476,712" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <Sequence DisplayName="Init" sap:VirtualizedContainerService.HintSize="476,905" sap2010:WorkflowViewState.IdRef="Sequence_3">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -101,6 +101,8 @@
             <InArgument x:TypeArguments="x:Boolean">False</InArgument>
           </Assign.Value>
         </Assign>
+        <usa:GetProcessInfoActivity JobId="{x:Null}" ProcessVersion="{x:Null}" WorkflowFilePath="{x:Null}" DisplayName="Get Process info" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="GetProcessInfoActivity_1" ProcessName="[aCurrentProcessName]" />
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Starting &quot; + aCurrentProcessName + &quot; with arguments NameFatherProcess:&quot; + NameFatherProcess + &quot; ContextName:&quot; + ContextName]" />
         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ReadConfig workflow" sap:VirtualizedContainerService.HintSize="434,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ReadConfig.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="aConfigDict">[aConfigDict]</OutArgument>

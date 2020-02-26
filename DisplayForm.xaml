@@ -157,7 +157,7 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <uia:InteractiveFormLauncher IconPath="{x:Null}" ScreenID="{x:Null}" AlwaysOnTop="True" sap2010:Annotation.AnnotationText="" CommunicationChannelName="SampleCommunicationChannelName" DisplayName="Interactive form launcher" FixedSize="True" FullScreen="False" HTMLPath="[aTempFileName]" Height="220" sap:VirtualizedContainerService.HintSize="573,883" sap2010:WorkflowViewState.IdRef="InteractiveFormLauncher_1" InputVariableName="payload" NoTitleBar="True" ScreenPosition="BottomRight" ScriptErrorsSuppressed="True" Title="UiPath Robot" UseLastPosition="False" Width="420">
+        <uia:InteractiveFormLauncher IconPath="{x:Null}" ScreenID="{x:Null}" AlwaysOnTop="True" sap2010:Annotation.AnnotationText="" CommunicationChannelName="[&quot;SampleCommunicationChannelName&quot; + if(aForceDoSomething, &quot;T&quot;,&quot;F&quot;)]" DisplayName="Interactive form launcher" FixedSize="True" FullScreen="False" HTMLPath="[aTempFileName]" Height="220" sap:VirtualizedContainerService.HintSize="573,883" sap2010:WorkflowViewState.IdRef="InteractiveFormLauncher_1" InputVariableName="payload" NoTitleBar="True" ScreenPosition="BottomRight" ScriptErrorsSuppressed="True" Title="UiPath Robot" UseLastPosition="False" Width="420">
           <uia:InteractiveFormLauncher.Body>
             <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
               <ActivityAction.Argument>
@@ -259,7 +259,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <Delay Duration="[aTimeout]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_4" />
-        <uia:ExecuteFormFunction CommunicationChannelName="SampleCommunicationChannelName" DisplayName="Execute form function" FunctionName="MyClose" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExecuteFormFunction_1" Parameters="[&quot;{ &quot;&quot;uipath-killform&quot;&quot; : &quot;&quot;1&quot;&quot;}&quot;]" />
+        <uia:ExecuteFormFunction CommunicationChannelName="[&quot;SampleCommunicationChannelName&quot; + if(aForceDoSomething, &quot;T&quot;,&quot;F&quot;)]" DisplayName="Execute form function" FunctionName="MyClose" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExecuteFormFunction_1" Parameters="[&quot;{ &quot;&quot;uipath-killform&quot;&quot; : &quot;&quot;1&quot;&quot;}&quot;]" />
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Sending a Close message to Form in Timer&quot;]" />
         <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_8">
           <Assign.To>
