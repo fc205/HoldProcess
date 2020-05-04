@@ -1,10 +1,10 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="RestoreTriggers" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:usa="clr-namespace:UiPathTeam.SharedContext.Activities;assembly=UiPathTeam.SharedContext.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="RestoreTriggers" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:usa="clr-namespace:UiPathTeam.SharedContext.Activities;assembly=UiPathTeam.SharedContext.Activities" xmlns:usc="clr-namespace:UiPathTeam.SharedContext.Context;assembly=UiPathTeam.SharedContext" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="NameFatherProcess" Type="InArgument(x:String)" />
     <x:Property Name="ContextName" Type="InArgument(x:String)" />
     <x:Property Name="aCurrentProcessName" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>496,476</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>496,950</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -26,6 +26,7 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>UiPathTeam.SharedContext.Activities</x:String>
+      <x:String>UiPathTeam.SharedContext.Context</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -45,32 +46,33 @@
       <AssemblyReference>UiPathTeam.SharedContext.Activities</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharedContext</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="RestoreTriggers" sap:VirtualizedContainerService.HintSize="476,416" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence DisplayName="RestoreTriggers" sap:VirtualizedContainerService.HintSize="476,890" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <usa:SharedContextScopeActivity FilePath="{x:Null}" Folder="{x:Null}" Clear="False" DisplayName="Shared Context Scope" sap:VirtualizedContainerService.HintSize="434,324" sap2010:WorkflowViewState.IdRef="SharedContextScopeActivity_2" Lock="True" Name="[ContextName]" Retries="5" Type="File">
-      <usa:SharedContextScopeActivity.Body>
-        <ActivityAction x:TypeArguments="usa:ContextClient">
+    <usa:ClientScopeActivity InputFolder="{x:Null}" OutputContextFile="{x:Null}" ClearContext="False" ContextName="[ContextName]" ContextType="NamedPipe" DisplayName="Shared Context Scope" sap:VirtualizedContainerService.HintSize="434,798" sap2010:WorkflowViewState.IdRef="ClientScopeActivity_1" Retries="5">
+      <usa:ClientScopeActivity.Body>
+        <ActivityAction x:TypeArguments="usc:ContextClient">
           <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="usa:ContextClient" Name="ContextClient" />
+            <DelegateInArgument x:TypeArguments="usc:ContextClient" Name="ContextClient" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Interact with the Context" sap:VirtualizedContainerService.HintSize="242,238" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence DisplayName="Interact with the Context" sap:VirtualizedContainerService.HintSize="376,664" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" From="{x:Null}" Action="AddTriggerListenerById" ArgumentsJson="1" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_6" To="[NameFatherProcess]" />
-            <usa:SharedContextMessageSendActivity ContextClient="{x:Null}" From="{x:Null}" Action="RemoveTriggerListenerByOwner" ArgumentsJson="[aCurrentProcessName]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextMessageSendActivity_7" To="[NameFatherProcess]" />
-            <usa:SharedContextVariableSetActivity ContextClient="{x:Null}" DisplayName="Set Variable in Context" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="SharedContextVariableSetActivity_1" Name="[aCurrentProcessName]" Value="Stopped" />
+            <usa:SendMessageActivity ContextClient="{x:Null}" From="{x:Null}" Action="AddTriggerListenerById" ArgumentsJson="1" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="SendMessageActivity_1" To="[NameFatherProcess]" />
+            <usa:SendMessageActivity ContextClient="{x:Null}" From="{x:Null}" Action="RemoveTriggerListenerByOwner" ArgumentsJson="[NameFatherProcess]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="SendMessageActivity_2" To="[NameFatherProcess]" />
+            <usa:SetVariableActivity ContextClient="{x:Null}" DisplayName="Set Variable in Context" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="SetVariableActivity_1" VariableName="[aCurrentProcessName]" VariableValue="Stopped" />
           </Sequence>
         </ActivityAction>
-      </usa:SharedContextScopeActivity.Body>
-    </usa:SharedContextScopeActivity>
+      </usa:ClientScopeActivity.Body>
+    </usa:ClientScopeActivity>
   </Sequence>
 </Activity>
