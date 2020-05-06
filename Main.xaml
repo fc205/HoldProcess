@@ -140,7 +140,7 @@
               <av:PointCollection x:Key="ConnectorLocation">250,405.5 250,437</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TryCatch DisplayName="Main" sap:VirtualizedContainerService.HintSize="1290,1269" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="Main" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -366,7 +366,7 @@
           <av:PointCollection x:Key="ConnectorLocation">470,143 470,166.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Check is Singleton" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_13">
+      <Sequence DisplayName="Check is Singleton" sap:VirtualizedContainerService.HintSize="687,842" sap2010:WorkflowViewState.IdRef="Sequence_13">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -389,7 +389,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <usa:GetVariableActivity ContextClient="{x:Null}" DisplayName="Get Variable from Context" sap:VirtualizedContainerService.HintSize="569,84" sap2010:WorkflowViewState.IdRef="GetVariableActivity_1" RaiseException="True" VariableName="[aCurrentProcessName]" VariableValue="[aProcessStatus]" />
+                <usa:GetVariableActivity ContextClient="{x:Null}" DisplayName="Get Variable from Context" sap:VirtualizedContainerService.HintSize="569,84" sap2010:WorkflowViewState.IdRef="GetVariableActivity_1" RaiseException="False" VariableName="[aCurrentProcessName]" VariableValue="[aProcessStatus]" />
                 <If Condition="[aProcessStatus = &quot;Running&quot;]" sap:VirtualizedContainerService.HintSize="569,207" sap2010:WorkflowViewState.IdRef="If_1">
                   <If.Then>
                     <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
