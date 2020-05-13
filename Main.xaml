@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.NameFatherProcess="DummyProcess" this:Main.ContextName="DummyContext" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:usa="clr-namespace:UiPathTeam.SharedContext.Activities;assembly=UiPathTeam.SharedContext.Activities" xmlns:usc="clr-namespace:UiPathTeam.SharedContext.Context;assembly=UiPathTeam.SharedContext" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.NameFatherProcess="DummyProcess" this:Main.ContextName="DummyContext" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uia="clr-namespace:UiPathTeam.InteractiveFormLauncher.Activities;assembly=UiPathTeam.InteractiveFormLauncher.Activities" xmlns:usa="clr-namespace:UiPathTeam.SharedContext.Activities;assembly=UiPathTeam.SharedContext.Activities" xmlns:usc="clr-namespace:UiPathTeam.SharedContext.Context;assembly=UiPathTeam.SharedContext" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="NameFatherProcess" Type="InArgument(x:String)" />
     <x:Property Name="ContextName" Type="InArgument(x:String)" />
@@ -140,7 +140,7 @@
               <av:PointCollection x:Key="ConnectorLocation">250,405.5 250,437</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TryCatch DisplayName="Main" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="Main" sap:VirtualizedContainerService.HintSize="1290,1269" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -163,7 +163,7 @@
                     <InOutArgument x:TypeArguments="x:Boolean" x:Key="shouldExit">[shouldExit]</InOutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
-                <usa:NamedPipeTriggerV2 ContinueOnError="{x:Null}" ContextName="[ContextName]" ContinueMonitoring="[Not shouldExit]" DisplayName="Named Pipe Trigger Standalone" sap:VirtualizedContainerService.HintSize="744,996" sap2010:WorkflowViewState.IdRef="NamedPipeTriggerV2_1" Retries="5">
+                <usa:NamedPipeTriggerV2 ContextName="[ContextName]" ContinueMonitoring="[Not shouldExit]" ContinueOnError="True" DisplayName="Named Pipe Trigger Standalone" sap:VirtualizedContainerService.HintSize="744,996" sap2010:WorkflowViewState.IdRef="NamedPipeTriggerV2_1" Retries="5">
                   <usa:NamedPipeTriggerV2.Body>
                     <ActivityAction x:TypeArguments="usc:ContextContent">
                       <ActivityAction.Argument>
@@ -207,7 +207,7 @@
                                       <av:Size x:Key="ShapeSize">200,66</av:Size>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Sequence DisplayName="Force stop" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                  <Sequence DisplayName="Force stop" sap:VirtualizedContainerService.HintSize="376,407" sap2010:WorkflowViewState.IdRef="Sequence_19">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -222,6 +222,8 @@
                                         <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                                       </Assign.Value>
                                     </Assign>
+                                    <uia:ExecuteFormFunction CommunicationChannelName="SampleCommunicationChannelNameT" DisplayName="Execute form function" FunctionName="MyClose" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExecuteFormFunction_1" Parameters="[&quot;{ &quot;&quot;uipath-killform&quot;&quot; : &quot;&quot;1&quot;&quot;}&quot;]" />
+                                    <uia:ExecuteFormFunction CommunicationChannelName="SampleCommunicationChannelNameF" DisplayName="Execute form function" FunctionName="MyClose" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="ExecuteFormFunction_2" Parameters="[&quot;{ &quot;&quot;uipath-killform&quot;&quot; : &quot;&quot;1&quot;&quot;}&quot;]" />
                                   </Sequence>
                                 </FlowStep>
                                 <FlowStep x:Name="__ReferenceID1">
@@ -366,7 +368,7 @@
           <av:PointCollection x:Key="ConnectorLocation">470,143 470,166.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Check is Singleton" sap:VirtualizedContainerService.HintSize="687,842" sap2010:WorkflowViewState.IdRef="Sequence_13">
+      <Sequence DisplayName="Check is Singleton" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_13">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>

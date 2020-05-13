@@ -68,7 +68,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <usa:SendMessageActivity ContextClient="{x:Null}" From="{x:Null}" Action="AddTriggerListenerById" ArgumentsJson="1" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="SendMessageActivity_1" To="[NameFatherProcess]" />
-            <usa:SendMessageActivity ContextClient="{x:Null}" From="{x:Null}" Action="RemoveTriggerListenerByOwner" ArgumentsJson="[NameFatherProcess]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="SendMessageActivity_2" To="[NameFatherProcess]" />
+            <usa:SendMessageActivity ContextClient="{x:Null}" From="{x:Null}" Action="RemoveTriggerListenerByOwner" ArgumentsJson="[aCurrentProcessName]" DisplayName="Send Message" sap:VirtualizedContainerService.HintSize="334,180" sap2010:WorkflowViewState.IdRef="SendMessageActivity_2" To="[NameFatherProcess]" />
             <usa:SetVariableActivity ContextClient="{x:Null}" DisplayName="Set Variable in Context" sap:VirtualizedContainerService.HintSize="334,132" sap2010:WorkflowViewState.IdRef="SetVariableActivity_1" VariableName="[aCurrentProcessName]" VariableValue="Stopped" />
           </Sequence>
         </ActivityAction>
